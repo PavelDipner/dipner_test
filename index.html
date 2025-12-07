@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нанесение изображений на футболки | DIPNER Дизайн-Студия</title>
+    <style>
+        /* ==================================== */
+        /* 0. Переменные и сброс (Reset) */
+        /* ==================================== */
+        :root {
+            --color-primary: #008060; /* Глубокий зеленый */
+            --color-secondary: #f0f8f8; /* Очень светлый зелено-серый */
+            --color-accent: #38c172; /* Светлый акцент */
+            --color-text: #333;
+            --color-light-gray: #ddd;
+            --color-border: #eee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* Общие стили секций */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+
+        /* Изображения */
+        .img-wrapper {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .responsive-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ==================================== */
+        /* НОВЫЕ СТИЛИ ДЛЯ ТОПЕРА И МЕНЮ */
+        /* ==================================== */
+        
+        /* Верхний топер - ТЕМНО-СЕРЫЙ ФОН */
+        .site-top-bar {
+            background-color: #333; /* Темно-серый фон */
+            border-bottom: 1px solid #444;
+            padding: 15px 0;
+            font-size: 0.9em;
+            color: #fff; /* Белый текст по умолчанию */
+        }
+
+        .site-top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .top-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .top-logo img {
+            height: 90px; /* Увеличенный размер логотипа */
+            display: block;
+        }
+
+        .top-address {
+            color: #ccc; /* Светло-серый текст для читаемости */
+            max-width: 300px;
+            font-size: 0.9em;
+            line-height: 1.3;
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 250px;
+        }
+
+        .search-box button {
+            padding: 8px 15px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Главное меню сайта - СЕРЫЙ ФОН */
+        .site-main-menu {
+            background-color: #e9ecef; /* Серый цвет */
+            border-bottom: 1px solid #d0d0d0;
+            padding: 15px 0;
+        }
+
+        .site-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .site-links a {
+            color: #333;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        .site-links a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        /* ==================================== */
+        /* 1. Навигация (Локальная) */
+        /* ==================================== */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            margin-left: 30px;
+        }
+
+        /* ==================================== */
+        /* 2. Кнопки (Buttons) */
+        /* ==================================== */
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #00664d;
+            text-decoration: none;
+        }
+
+        .btn-lg {
+            padding: 15px 35px;
+            font-size: 1.1em;
+        }
+
+        /* Ссылка на видео */
+        .video-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            border: 1px solid var(--color-primary);
+            border-radius: 5px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--color-primary) !important;
+            text-decoration: none !important;
+            transition: all 0.3s;
+        }
+
+        .video-link:hover {
+            background-color: var(--color-primary);
+            color: #fff !important;
+        }
+
+
+        /* ==================================== */
+        /* 3. HERO Блок */
+        /* ==================================== */
+        .hero {
+            padding: 80px 0 60px;
+            background-color: var(--color-secondary);
+        }
+
+        .hero__inner {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero__text-content {
+            flex: 1;
+        }
+
+        .hero__text-content h1 {
+            text-align: left;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+
+        .hero__image {
+            flex: 0 0 580px;
+            text-align: center;
+        }
+        
+        .hero__image img {
+             border-radius: 12px;
+             transform: rotate(2deg);
+             transition: transform 0.3s;
+        }
+        
+        .hero__image img:hover {
+             transform: rotate(0deg) scale(1.02);
+        }
+
+        /* ==================================== */
+        /* 4. Блок INTRO / Checklist */
+        /* ==================================== */
+        .section-intro {
+            background-color: #fff;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .intro-layout {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-image {
+            flex: 0 0 350px;
+        }
+
+        .checklist-grid {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .checklist-item {
+            flex: 1 1 300px;
+            display: flex;
+            gap: 15px;
+            padding: 25px;
+            background-color: var(--color-secondary);
+            border-radius: 12px;
+            align-items: flex-start;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .checklist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .checklist-icon {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .section-note {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================================== */
+        /* 5. Блок ТЕХНОЛОГИИ (Tech) */
+        /* ==================================== */
+        .section-tech {
+            background-color: #fff;
+        }
+
+        /* Теперь .tech - это контейнер для всего блока */
+        .tech {
+            padding: 80px 0;
+        }
+
+        .tech__row {
+            gap: 30px;
+        }
+        
+        .tech__content {
+            order: 2;
+        }
+
+        .tech__media {
+            order: 1;
+        }
+        
+        .tech__row--reverse {
+            flex-direction: column; 
+        }
+
+        /* Ряд для контента и изображения */
+        .tech__row {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            margin-bottom: 40px; /* Отступ до таблицы цен */
+        }
+
+        .tech__media, .tech__content {
+            flex: 1;
+        }
+
+        .tech__media {
+             position: sticky;
+             top: 100px;
+        }
+        
+        /* Сетка для мини-галереи */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .tech h3 {
+            color: var(--color-primary);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .tech__tagline {
+            font-style: italic;
+            color: #555;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 15px;
+        }
+
+        .tech h4 {
+            color: var(--color-text);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .tech ul {
+            margin-left: 20px;
+            padding-left: 5px;
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .tech ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tech ul li::before {
+            content: "•";
+            color: var(--color-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .tech__summary {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--color-secondary);
+            border-radius: 8px;
+            font-size: 0.95em;
+            border: 1px solid #e0f0e9;
+        }
+
+        /* Обратный порядок для ряда */
+        .tech__row--reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* --- Стили для таблиц цен --- */
+        .price-wrapper {
+            margin-top: 20px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            width: 100%; /* На всю ширину */
+        }
+
+        .price-title {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        .price-table th, .price-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .price-table th {
+            background-color: #fafafa;
+            color: #666;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .price-table tr:hover {
+            background-color: #fbfffa;
+        }
+
+        .price-note {
+            padding: 10px 15px;
+            font-size: 0.8em;
+            color: #888;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+        }
+
+
+        /* ==================================== */
+        /* 6. Блок СРАВНЕНИЕ (Compare) */
+        /* ==================================== */
+        .section-compare {
+            background-color: var(--color-secondary);
+            padding: 80px 0;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .compare-table thead th {
+            background-color: var(--color-primary);
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tbody tr:hover {
+            background-color: #f9fff9;
+        }
+
+        .hint {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-top: 30px;
+        }
+
+
+        /* ==================================== */
+        /* 7. Блок FAQ - ОБНОВЛЕН ДЛЯ 2 КОЛОНОК */
+        /* ==================================== */
+        .section-faq {
+            background-color: #fff;
+        }
+
+        .faq-inner-layout {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .faq-image {
+            flex: 0 0 40%;
+            position: sticky;
+            top: 100px;
+        }
+
+        .faq-list {
+            flex: 1;
+        }
+
+        .faq-item {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-item summary {
+            font-weight: 600;
+            padding: 20px;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            color: var(--color-text);
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--color-primary);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        .faq-item[open] summary::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-item[open] summary {
+            color: var(--color-primary);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .faq-item__content {
+            padding: 20px;
+            background-color: #fcfcfc;
+            color: #555;
+        }
+
+        /* ==================================== */
+        /* 7.5. Блок МЕНЕДЖЕРЫ (Обновлено с фото) */
+        /* ==================================== */
+        .section-managers {
+            background-color: #fff;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .managers-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .manager-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            width: 350px;
+            display: flex; /* Flex для фото слева */
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .manager-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .manager-photo {
+            flex: 0 0 80px; /* Фиксированная ширина фото */
+            height: 210px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+
+        .manager-info {
+            flex: 1;
+        }
+
+        .manager-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 2px;
+        }
+
+        .manager-position {
+            color: #777;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .manager-contact {
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+
+        .manager-contact a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .manager-contact a:hover {
+            color: var(--color-primary);
+        }
+
+
+        /* ==================================== */
+        /* 8. Форма CTA */
+        /* ==================================== */
+        .section-cta {
+            background-color: var(--color-primary);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+            background-image: linear-gradient(135deg, #008060 0%, #00664d 100%);
+        }
+
+        .section-cta h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .section-cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .order-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text);
+            font-size: 0.9em;
+        }
+
+        .order-form input[type="text"],
+        .order-form input[type="email"],
+        .order-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .order-form input:focus,
+        .order-form textarea:focus {
+            border-color: var(--color-accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(56, 193, 114, 0.1);
+            background-color: #fff;
+        }
+
+        .order-form .btn-lg {
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .form-note {
+            font-size: 0.85em;
+            color: #666;
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--color-light-gray);
+            line-height: 1.4;
+        }
+
+        /* ==================================== */
+        /* 9. Футер */
+        /* ==================================== */
+        .footer {
+            background-color: #222;
+            color: #888;
+            padding: 30px 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #aaa;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* ==================================== */
+        /* 10. Модальное окно (Lightbox) */
+        /* ==================================== */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 200; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 90vh;
+            object-fit: contain; /* Чтобы изображение полностью помещалось в модальном окне */
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        
+        .modal-text {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ==================================== */
+        /* 11. Кнопка "Наверх" */
+        /* ==================================== */
+        #backToTopBtn {
+            display: none; /* Скрыта по умолчанию */
+            position: fixed;
+            bottom: 40px;
+            right: 30px; /* По умолчанию справа для мобильных */
+            z-index: 99;
+            cursor: pointer;
+            /* Flexbox для вертикального выравнивания */
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: transform 0.3s;
+            /* Сброс стилей кнопки, так как теперь это контейнер */
+            background: none;
+            border: none;
+            padding: 0;
+            width: auto;
+            height: auto;
+            box-shadow: none;
+        }
+
+        #backToTopBtn:hover {
+            transform: translateY(-5px);
+            background: none; /* Убираем фон контейнера при ховере */
+        }
+        
+        .btt-circle {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background-color 0.3s;
+        }
+
+        #backToTopBtn:hover .btt-circle {
+            background-color: var(--color-accent);
+        }
+
+        .btt-text {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2px 5px;
+            border-radius: 4px;
+            line-height: 1;
+        }
+        
+        /* Скрываем кнопку, но JS её покажет как flex */
+        #backToTopBtn[style*="display: flex"] {
+            display: flex !important;
+        }
+
+        /* Позиционирование рядом с контентом на больших экранах */
+        @media (min-width: 1350px) {
+            #backToTopBtn {
+                right: auto;
+                left: 50%;
+                margin-left: 620px; /* 600px (половина контейнера) + 20px отступ */
+            }
+        }
+
+
+        /* ==================================== */
+        /* 12. Адаптивность (Media Queries) */
+        /* ==================================== */
+        @media (max-width: 1000px) {
+            .hero__inner, .tech__row, .intro-layout, .faq-inner-layout {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .faq-image, .tech__media {
+                position: static;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto 30px;
+            }
+
+            .intro-image {
+                flex: auto;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto 30px;
+                order: -1;
+            }
+            
+            .tech {
+                padding: 40px 0;
+            }
+            
+            .tech__row {
+                gap: 30px;
+            }
+            
+            .tech__content {
+                order: 2;
+            }
+
+            .tech__media {
+                order: 1;
+            }
+            
+            .tech__row--reverse {
+                flex-direction: column; 
+            }
+
+            .hero__text-content h1 {
+                text-align: center;
+                font-size: 2.5em;
+            }
+            
+            .hero__image {
+                flex: auto;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .main-nav .container {
+                justify-content: center;
+            }
+            
+            .logo {
+                flex-grow: 1;
+                text-align: center;
+            }
+
+            .checklist-grid {
+                flex-direction: column;
+            }
+            
+            .btn-lg {
+                width: 100%;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(3, 1fr); /* На мобильных тоже 3 колонки, но меньшего размера */
+            }
+            
+            .modal-content {
+                width: 90%;
+            }
+            
+            .site-top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .site-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 1. ВЕРХНИЙ ТОПЕР С ЛОГОТИПОМ -->
+<div class="site-top-bar">
+    <div class="container">
+        <div class="top-info">
+            <!-- Вставил логотип -->
+            <a href="https://dipner.kz" class="top-logo">
+                <img src="https://dipner.kz/sites/all/themes/artstyle_bootstrap/logo.png" alt="DIPNER Логотип">
+            </a>
+            <span class="top-address">КАЗАХСТАН г. Караганда, ул. Новоселов, 190/1 ART-ЦЕНТР</span>
+        </div>
+        <div class="search-box">
+            <!-- Обновил плейсхолдер -->
+            <input type="text" placeholder="Напишите, что вы ищите?">
+            <button>Найти</button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. ГЛАВНОЕ МЕНЮ САЙТА (Серый фон) -->
+<div class="site-main-menu">
+    <div class="container">
+        <ul class="site-links">
+            <li><a href="#">Наружная реклама</a></li>
+            <li><a href="#">Полиграфия</a></li>
+            <li><a href="#">Сувенирная продукция</a></li>
+            <li><a href="#">Технологии</a></li>
+            <li><a href="#">Склад сувениров</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </div>
+</div>
+
+<section class="page-futbolki">
+
+  <!-- Секция навигации (Локальная) -->
+  <nav class="main-nav">
+      <div class="container">
+          <a href="#" class="logo">РЕКЛАМНЫЙ ТЕКСТИЛЬ</a>
+          <ul class="nav-links">
+              <li><a href="#tech-dtf">DTF</a></li>
+              <li><a href="#tech-flex">FLEX</a></li>
+              <li><a href="#tech-sublimation">Сублимация</a></li> 
+              <li><a href="#tech-silk">Шелкография</a></li>
+              <li><a href="#tech-embroidery">Вышивка</a></li>
+              <li><a href="#order-form" class="btn btn-primary nav-cta">Рассчитать стоимость</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <!-- HERO БЛОК -->
+  <header class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text-content">
+          <h1>Нанесение изображений на футболки и текстиль</h1>
+          <p class="tagline" style="text-align: left; margin: 0 0 30px 0;">
+            DIPNER Дизайн-Студия наносит логотипы, надписи и изображения на футболки, толстовки,
+            свитшоты, худи, спортивную и рабочую одежду.
+          </p>
+          <p style="margin-bottom: 30px;">
+            Мы поможем подобрать технологию так, чтобы изображение выглядело красиво, служило как можно дольше
+            и при этом стоимость была комфортной.
+          </p>
+          <a href="#order-form" class="btn btn-primary btn-lg">
+            Отправить запрос на расчёт
+          </a>
+      </div>
+      <div class="hero__image">
+          <div class="img-wrapper">
+              <img src="main-tshirt-image.jpg" alt="Пример готовой футболки с нанесением" class="responsive-img">
+          </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- БЛОК: КАК МЫ ПОДБИРАЕМ ТЕХНОЛОГИЮ -->
+  <section class="section section-intro">
+    <div class="container section__inner">
+      <h2>Как мы подбираем способ нанесения</h2>
+      
+      <div class="intro-layout">
+          <div class="intro-text">
+            <p>
+                Чтобы правильно посчитать стоимость и выбрать оптимальную технологию, нам нужно знать всего три вещи:
+                изделие, тираж и материал. Ниже — простой чек-лист, который поможет вам сориентироваться.
+            </p>
+          </div>
+          <div class="intro-image">
+               <div class="img-wrapper">
+                  <img src="Generated%20Image%20December%2007,%202025%20-%2012_35PM%20(4).jpg" alt="Пример сложного принта с тигром" class="responsive-img">
+               </div>
+          </div>
+      </div>
+
+      <div class="checklist-grid">
+          <div class="checklist-item">
+              <span class="checklist-icon">1</span>
+              <div>
+                  <strong>Какое изделие?</strong><br>
+                  Футболка, толстовка, свитшот, худи, спецодежда, куртка, сумка, жилет
+                  или крой (несшитая ткань).
+              </div>
+          </div>
+          <div class="checklist-item">
+              <span class="checklist-icon">2</span>
+              <div>
+                  <strong>Какой тираж?</strong><br>
+                  1 изделие, 10 или 500. Чем больше изделий, тем ниже стоимость нанесения за единицу.
+              </div>
+          </div>
+          <div class="checklist-item">
+              <span class="checklist-icon">3</span>
+              <div>
+                  <strong>Из какого материала?</strong><br>
+                  Хлопок, синтетика или смешанная ткань. Важно понимать, выдержит ли материал
+                  температурную обработку.
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЛОК: ТЕХНОЛОГИИ НАНЕСЕНИЯ -->
+  <section class="section section-tech">
+    <div class="container section__inner">
+      <h2>Основные технологии нанесения</h2>
+      <p class="tagline">
+        Коротко о том, чем отличаются технологии, сколько они стоят и для чего подходят.
+      </p>
+
+      <!-- DTF -->
+      <article class="tech" id="tech-dtf">
+        <div class="tech__row">
+            <div class="tech__media">
+                <div class="img-wrapper">
+                    <img src="dtf-example.jpg" alt="Пример DTF-печати" class="tech__img responsive-img">
+                </div>
+                
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('placeholder-dtf-1.jpg', 'DTF-пример 1: Полноцветный рисунок')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=DTF+1" alt="DTF-пример 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-dtf-2.jpg', 'DTF-пример 2: Фото на черной футболке')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=DTF+2" alt="DTF-пример 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-dtf-3.jpg', 'DTF-пример 3: Детализация')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=DTF+3" alt="DTF-пример 3">
+                    </div>
+                </div>
+            </div>
+            <div class="tech__content">
+                <h3>DTF-печать (термоперенос)</h3>
+                <p class="tech__tagline">
+                  Лучший выбор для цветных картинок, фото и небольших тиражей.
+                </p>
+                <p>
+                  Изображение печатается на специальной плёнке и затем переносится на ткань под прессом.
+                  Получается тонкий, эластичный цветной слой.
+                </p>
+
+                <h4>Когда подходит:</h4>
+                <ul>
+                  <li>нужно от 1 до 20 изделий;</li>
+                  <li>каждое изделие с разным принтом;</li>
+                  <li>нужно напечатать фотографию или сложный рисунок.</li>
+                </ul>
+
+                <p class="tech__summary">
+                  <strong>Итого:</strong> Идеально для подарков, мерча малыми партиями, фотосессий.
+                </p>
+                <a href="https://www.youtube.com/watch?v=A1bC2dE4f5g" target="_blank" class="video-link">Узнать подробнее (видео-демонстрация)</a>
+            </div>
+        </div>
+        
+        <!-- Таблица цен (ниже основного блока) -->
+        <div class="price-wrapper">
+            <div class="price-title">Прайс-лист: DTF (за 1 принт)</div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Тираж</th>
+                        <th>1 шт</th>
+                        <th>2 шт</th>
+                        <th>3-5 шт</th>
+                        <th>6-9 шт</th>
+                        <th>10 шт</th>
+                        <th>>10 шт</th>
+                        <th>>20 шт</th>
+                        <th>>50 шт</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>10х10см</strong></td>
+                        <td>1000</td>
+                        <td>800</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>А4</strong></td>
+                        <td>2000</td>
+                        <td>1900</td>
+                        <td>1800</td>
+                        <td>1600</td>
+                        <td>1500</td>
+                        <td>1400</td>
+                        <td>1300</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>А3</strong></td>
+                        <td>4000</td>
+                        <td>3800</td>
+                        <td>3500</td>
+                        <td>3200</td>
+                        <td>3000</td>
+                        <td>2800</td>
+                        <td>2500</td>
+                        <td>2200</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-note">
+                * Цены в тенге за штуку. Цена включает печать и перенос. Изделие оплачивается отдельно.
+            </div>
+        </div>
+      </article>
+
+      <!-- FLEX -->
+      <article class="tech" id="tech-flex">
+        <div class="tech__row tech__row--reverse">
+            <div class="tech__media">
+                <div class="img-wrapper">
+                    <img src="flex-example.jpg" alt="Пример термотрансфера FLEX" class="tech__img responsive-img">
+                </div>
+                
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('placeholder-flex-1.jpg', 'FLEX-пример 1: Номера на форме')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=FLEX+1" alt="FLEX-пример 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-flex-2.jpg', 'FLEX-пример 2: Светоотражающая пленка')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=FLEX+2" alt="FLEX-пример 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-flex-3.jpg', 'FLEX-пример 3: Логотип в один цвет')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=FLEX+3" alt="FLEX-пример 3">
+                    </div>
+                </div>
+            </div>
+            <div class="tech__content">
+                <h3>FLEX-плёнки (терморезина)</h3>
+                <p class="tech__tagline">
+                  Стандарт для спортивных номеров, фамилий и простых одноцветных логотипов.
+                </p>
+                <p>
+                  Из цветной виниловой плёнки на плоттере вырезается текст или логотип, затем впаивается в ткань.
+                </p>
+
+                <h4>Когда подходит:</h4>
+                <ul>
+                  <li>спортивная форма (номера, фамилии);</li>
+                  <li>крупные надписи на футболках и спецодежде;</li>
+                  <li>нужны спецэффекты: светоотражение, неон.</li>
+                </ul>
+
+                <p class="tech__summary">
+                  <strong>Итого:</strong> Самый надежный вариант для надписей и простой графики.
+                </p>
+                <a href="https://www.youtube.com/watch?v=jW9fV3gP8h0" target="_blank" class="video-link">Узнать подробнее (видео-демонстрация)</a>
+            </div>
+        </div>
+        
+        <div class="price-wrapper">
+            <div class="price-title">Прайс-лист: FLEX</div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Услуга</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Нанесение термотрансферной пленки</td>
+                        <td><strong>5 тг / кв.см</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-note">
+                * Цена за каждый цвет нанесения считается отдельно!
+            </div>
+        </div>
+      </article>
+
+      <!-- SUBLIMATION -->
+      <article class="tech" id="tech-sublimation">
+        <div class="tech__row">
+            <div class="tech__media">
+                 <div class="img-wrapper">
+                    <img src="sublimation-example.jpg" alt="Пример сублимационной печати" class="tech__img responsive-img">
+                 </div>
+                 
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('placeholder-sub-1.jpg', 'Сублимация-пример 1: Яркие цвета на белой ткани')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=SUB+1" alt="Сублимация-пример 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-sub-2.jpg', 'Сублимация-пример 2: Изображение на синтетической форме')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=SUB+2" alt="Сублимация-пример 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-sub-3.jpg', 'Сублимация-пример 3: Полная запечатка')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=SUB+3" alt="Сублимация-пример 3">
+                    </div>
+                </div>
+            </div>
+            <div class="tech__content">
+                <h3>Сублимационная печать</h3>
+                <p class="tech__tagline">
+                  Для белой синтетики — вечное нанесение, которое не чувствуется на ощупь.
+                </p>
+                <p>
+                  Краска под температурой переходит в газообразное состояние и прокрашивает сами волокна ткани.
+                </p>
+
+                <h4>Когда подходит:</h4>
+                <ul>
+                  <li>только светлая синтетика (спорт. форма, флаги);</li>
+                  <li>когда важна "дышащая" поверхность;</li>
+                  <li>максимальная стойкость к стиркам.</li>
+                </ul>
+
+                <p class="tech__summary">
+                  <strong>Итого:</strong> Отличный выбор для спортивной промо-одежды и флагов.
+                </p>
+                <a href="https://www.youtube.com/watch?v=OaXz7r8Vb5c" target="_blank" class="video-link">Узнать подробнее (видео-демонстрация)</a>
+            </div>
+        </div>
+        
+        <div class="price-wrapper">
+            <div class="price-title">Прайс-лист: Сублимация</div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Размер</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>А4 формат</td>
+                        <td>~ 1 800 - 2 000 ₸</td>
+                    </tr>
+                    <tr>
+                        <td>А3 формат</td>
+                        <td>~ 3 000 - 3 500 ₸</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-note">
+                * Точная стоимость рассчитывается индивидуально. Печать возможна только на тканях с содержанием полиэстера >60%.
+            </div>
+        </div>
+      </article>
+
+      <!-- SILKSCREEN -->
+      <article class="tech" id="tech-silk">
+        <div class="tech__row tech__row--reverse">
+            <div class="tech__media">
+                <div class="img-wrapper">
+                    <img src="silk-example.jpg" alt="Пример шелкотрафаретной печати" class="tech__img responsive-img">
+                </div>
+                
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('placeholder-silk-1.jpg', 'Шелкография-пример 1: Большой тираж')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=SILK+1" alt="Шелкография-пример 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-silk-2.jpg', 'Шелкография-пример 2: Яркий одноцветный логотип')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=SILK+2" alt="Шелкография-пример 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-silk-3.jpg', 'Шелкография-пример 3: 3 цвета')">
+                        <img src="https://placehold.co/150x150/38c172/FFFFFF?text=SILK+3" alt="Шелкография-пример 3">
+                    </div>
+                </div>
+            </div>
+            <div class="tech__content">
+                <h3>Шелкография</h3>
+                <p class="tech__tagline">
+                  Классика для оптовых тиражей. Выгодно и долговечно.
+                </p>
+                <p>
+                  Краска продавливается через трафарет прямо на ткань. Чем больше тираж — тем дешевле одна футболка.
+                </p>
+
+                <h4>Когда подходит:</h4>
+                <ul>
+                  <li>тиражи от 50 штук и выше;</li>
+                  <li>логотипы в 1–3 цвета;</li>
+                  <li>корпоративный мерч для сотрудников.</li>
+                </ul>
+
+                <p class="tech__summary">
+                  <strong>Итого:</strong> Выбор бизнеса для больших заказов.
+                </p>
+                <a href="https://www.youtube.com/watch?v=E6u7d4bK4o8" target="_blank" class="video-link">Узнать подробнее (видео-демонстрация)</a>
+            </div>
+        </div>
+        
+        <div class="price-wrapper">
+            <div class="price-title">Прайс-лист: Шелкография</div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Влияние на цену</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Тираж</td>
+                        <td>Чем выше, тем дешевле 1 шт.</td>
+                    </tr>
+                    <tr>
+                        <td>Кол-во цветов</td>
+                        <td>Каждый цвет увеличивает стоимость</td>
+                    </tr>
+                    <tr>
+                        <td>Настройка оборудования</td>
+                        <td>Оплачивается отдельно (разово)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-note">
+                * Для точного расчета пришлите макет и тираж.
+            </div>
+        </div>
+      </article>
+
+      <!-- EMBROIDERY -->
+      <article class="tech" id="tech-embroidery">
+        <div class="tech__row">
+            <div class="tech__media">
+                 <div class="img-wrapper">
+                    <img src="embroidery-example.jpg" alt="Пример вышивки" class="tech__img responsive-img">
+                 </div>
+                 
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('placeholder-emb-1.jpg', 'Вышивка-пример 1: Логотип на бейсболке')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=EMB+1" alt="Вышивка-пример 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-emb-2.jpg', 'Вышивка-пример 2: Нанесение на плотную ткань')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=EMB+2" alt="Вышивка-пример 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('placeholder-emb-3.jpg', 'Вышивка-пример 3: Шеврон')">
+                        <img src="https://placehold.co/150x150/008060/FFFFFF?text=EMB+3" alt="Вышивка-пример 3">
+                    </div>
+                </div>
+            </div>
+            <div class="tech__content">
+                <h3>Вышивка</h3>
+                <p class="tech__tagline">
+                  Премиальный вид. Статусно, объёмно, дорого.
+                </p>
+                <p>
+                  Логотип вышивается нитями. Это самый долговечный способ нанесения, который выглядит очень солидно.
+                </p>
+
+                <h4>Когда подходит:</h4>
+                <ul>
+                  <li>куртки, флис, плотные толстовки, бейсболки;</li>
+                  <li>униформа сотрудников;</li>
+                  <li>шевроны и нашивки.</li>
+                </ul>
+
+                <p class="tech__summary">
+                  <strong>Итого:</strong> Для тех, кому важно качество и презентабельность.
+                </p>
+                <a href="https://www.youtube.com/watch?v=F0kQv7k0n1U" target="_blank" class="video-link">Узнать подробнее (видео-демонстрация)</a>
+            </div>
+        </div>
+        
+        <div class="price-wrapper">
+            <div class="price-title">Прайс-лист: Машинная вышивка</div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Услуга</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Разработка программы (дизайн)</td>
+                        <td>3 000 - 5 000 ₸ (разово)</td>
+                    </tr>
+                    <tr>
+                        <td>Вышивка (цена за 1000 стежков)</td>
+                        <td>Рассчитывается индивидуально</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="price-note">
+                * Стоимость зависит от плотности застила и кол-ва стежков. Нужен макет для точного расчета.
+            </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- БЛОК: СРАВНЕНИЕ ТЕХНОЛОГИЙ -->
+  <section class="section section-compare">
+    <div class="container section__inner">
+      <h2>Шпаргалка по выбору</h2>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Задача / Ситуация</th>
+            <th>Технология</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1–10 футболок с цветным принтом (подарок)</td>
+            <td><strong>DTF-печать</strong></td>
+          </tr>
+          <tr>
+            <td>Номера на футбольную форму</td>
+            <td><strong>FLEX-плёнка</strong></td>
+          </tr>
+          <tr>
+            <td>50+ футболок с логотипом компании</td>
+            <td><strong>Шелкография</strong></td>
+          </tr>
+          <tr>
+            <td>Спортивные майки (синтетика) для марафона</td>
+            <td><strong>Сублимация</strong></td>
+          </tr>
+          <tr>
+            <td>Логотип на тёплую куртку или флис</td>
+            <td><strong>Вышивка</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="hint">
+        Сомневаетесь? Просто пришлите фото — мы подскажем!
+      </p>
+    </div>
+  </section>
+
+  <!-- БЛОК: FAQ -->
+  <section class="section section-faq">
+    <div class="container section__inner">
+      <h2>Частые вопросы</h2>
+
+      <div class="faq-inner-layout">
+          <!-- Левая колонка: Картинка FAQ -->
+          <div class="faq-image">
+              <div class="img-wrapper">
+                  <img src="Gemini_Generated_Image_qfg9xwqfg9xwqfg9.jpg" alt="Частые вопросы по нанесению" class="responsive-img">
+              </div>
+          </div>
+
+          <!-- Правая колонка: Аккордеон -->
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>У вас есть свои футболки или нужно приносить?</summary>
+              <div class="faq-item__content">
+                <p>
+                  Можно и так, и так. У нас есть каталог качественного текстиля под нанесение. 
+                  Но вы также можете принести свои изделия — главное, чтобы они подходили по составу ткани.
+                </p>
+              </div>
+            </details>
+            
+            <details class="faq-item">
+              <summary>Как быстро вы делаете печать?</summary>
+              <div class="faq-item__content">
+                <p>
+                  Единичные заказы (DTF, Flex) делаем за 1–2 рабочих дня. Большие тиражи (шелкография) — от 3 до 7 дней в зависимости от загрузки производства.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>Наносите ли вы фото на черные футболки?</summary>
+              <div class="faq-item__content">
+                <p>
+                  Да! Технология DTF позволяет печатать яркие полноцветные изображения на ткани любого цвета, даже на черной.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>Будет ли скидка за опт?</summary>
+              <div class="faq-item__content">
+                <p>
+                  Обязательно. Чем больше тираж — тем ниже цена за одно нанесение. Особенно это заметно при заказе шелкографии.
+                </p>
+              </div>
+            </details>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЛОК: ФОРМА / CTA -->
+  <section class="section section-cta" id="order-form">
+    <div class="container section__inner">
+      <h2>Оставьте заявку на расчёт</h2>
+      <p>
+        Мы свяжемся с вами в WhatsApp или по телефону и предложим варианты.
+      </p>
+
+      <form class="order-form" onsubmit="event.preventDefault(); showMessageBox('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.', 'success');">
+        <div class="form-row">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Иван" required>
+        </div>
+
+        <div class="form-row">
+          <label for="contact">Телефон / WhatsApp</label>
+          <input type="text" id="contact" name="contact" placeholder="+7 777 000 00 00" required>
+        </div>
+
+        <div class="form-row">
+          <label for="product">Что нужно сделать?</label>
+          <input type="text" id="product" name="product" placeholder="Например: 10 футболок с логотипом на спине">
+        </div>
+
+        <div class="form-row">
+          <label for="comment">Комментарий (необязательно)</label>
+          <textarea id="comment" name="comment" rows="3" placeholder="Есть ли у вас макет? Какие сроки?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">
+          Рассчитать стоимость
+        </button>
+
+        <p class="form-note">
+          Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 4. БЛОК С МЕНЕДЖЕРАМИ (Обновлен) -->
+  <section class="section section-managers">
+      <div class="container">
+          <h2>ЕСТЬ ВОПРОС?</h2>
+          <p class="tagline">Мы всегда готовы Вам помочь:</p>
+          
+          <div class="managers-grid">
+              <div class="manager-card">
+                  <!-- Заглушка для фото (Замените src на реальное фото) -->
+                  <img src="stas.jpg" alt="Станислав Гарипов" class="manager-photo">
+                  <div class="manager-info">
+                      <div class="manager-name">Станислав Гарипов</div>
+                      <div class="manager-position">Исп. Директор</div>
+                      <div class="manager-contact">Тел.: (7212) 910-444</div>
+                      <div class="manager-contact">WhatsApp: <a href="https://wa.me/77005010820">+7-700-501-0820</a></div>
+                      <div class="manager-contact">Email: <a href="mailto:stas@dipner.kz">stas@dipner.kz</a></div>
+                  </div>
+              </div>
+
+              <div class="manager-card">
+                  <!-- Заглушка для фото -->
+                  <img src="indira.jpg" alt="Индира Избасарова" class="manager-photo">
+                  <div class="manager-info">
+                      <div class="manager-name">Индира Избасарова</div>
+                      <div class="manager-position">Менеджер</div>
+                      <div class="manager-contact">Тел.: (7212) 910-222</div>
+                      <div class="manager-contact">WhatsApp: <a href="https://wa.me/77003644840">+7-700-364-4840</a></div>
+                      <div class="manager-contact">Email: <a href="mailto:indira@dipner.kz">indira@dipner.kz</a></div>
+                  </div>
+              </div>
+
+              <div class="manager-card">
+                  <!-- Заглушка для фото -->
+                  <img src="diana.jpg" alt="Диана Мин" class="manager-photo">
+                  <div class="manager-info">
+                      <div class="manager-name">Диана Мин</div>
+                      <div class="manager-position">Менеджер</div>
+                      <div class="manager-contact">Тел.: (7212) 912-444</div>
+                      <div class="manager-contact">WhatsApp: <a href="https://wa.me/77003509060">+7-700-350-9060</a></div>
+                      <div class="manager-contact">Email: <a href="mailto:diana@dipner.kz">diana@dipner.kz</a></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+      <div class="container">
+          <p>&copy; 2025 DIPNER Дизайн-Студия.</p>
+          <p>
+              <a href="#">Instagram</a> |
+              <a href="#">WhatsApp</a> |
+              <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+          </p>
+      </div>
+  </footer>
+
+  <!-- Изменили структуру кнопки на div-контейнер для текста -->
+  <div onclick="topFunction()" id="backToTopBtn" title="Вернуться наверх">
+      <div class="btt-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      </div>
+      <span class="btt-text">НА ВЕРХ</span>
+  </div>
+
+</section>
+
+<!-- Модальное окно (Lightbox) для увеличения изображений -->
+<div id="myModal" class="modal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption" class="modal-text"></div>
+</div>
+
+<!-- Месседжбокс вместо alert -->
+<div id="messageBox" style="position: fixed; top: 20px; right: 20px; z-index: 1000; padding: 15px 25px; border-radius: 8px; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.5s ease-in-out; opacity: 0; display: none;"></div>
+
+<script>
+    // --- Логика модального окна для галереи ---
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    function openModal(src, alt) {
+        modal.style.display = "block";
+        modalImg.src = src;
+        captionText.innerHTML = alt;
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Закрытие по клавише Esc
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+    
+    // --- Логика Месседжбокса ---
+    function showMessageBox(message, type = 'info') {
+        const box = document.getElementById('messageBox');
+        box.innerText = message;
+        box.style.display = 'block';
+        box.style.opacity = 1;
+        
+        let bgColor = '#4CAF50'; // success
+        if (type === 'error') {
+            bgColor = '#f44336';
+        } else if (type === 'warning') {
+            bgColor = '#ff9800';
+        }
+
+        box.style.backgroundColor = bgColor;
+
+        setTimeout(() => {
+            box.style.opacity = 0;
+            // Скрываем после окончания анимации
+            setTimeout(() => {
+                box.style.display = 'none';
+            }, 500);
+        }, 3000);
+    }
+
+    // --- Кнопка Наверх ---
+    var mybutton = document.getElementById("backToTopBtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mybutton.style.display = "flex";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
+
+</body>
+</html>
